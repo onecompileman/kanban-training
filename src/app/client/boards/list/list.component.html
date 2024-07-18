@@ -1,0 +1,12 @@
+<div class="kt-list">
+  <span class="ms-1 kt-list__title">List title {{ item }}</span>
+  <div class="kt-list__container" cdkDropList>
+    <div *ngFor="let i of [1,2,3,4]" cdkDrag class="kt-list__item">
+      <span class="kt-list__item-title">Sample 1</span>
+      <span class="kt-list__item-subtitle">0 of 3 tasks</span>
+    </div>
+    <button (click)="addTask()" class="kt-button kt-button--md kt-button--inverse">
+        + Add list
+      </button>
+  </div>
+</div>

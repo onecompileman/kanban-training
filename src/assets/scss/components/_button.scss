@@ -10,10 +10,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  height: min-content;
 
   &--sm {
     min-width: 32px;
-    padding: 10px 14px;
+    padding: 7px 14px;
     font-size: 12px;
     border-radius: 20px;
   }
@@ -47,6 +48,15 @@
   }
   &--primary {
     background-color: $button_primary;
+    color: $light;
+    &:active {
+      background-color: $light;
+      color: $button_primary;
+    }
+  }
+
+  &--inverse {
+    background-color: $bg1;
     color: $light;
     &:active {
       background-color: $light;

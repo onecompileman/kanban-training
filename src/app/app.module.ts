@@ -10,6 +10,9 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { AngularFireModule } from "@angular/fire/compat";
+import { AngularFireAuthModule } from "@angular/fire/compat/auth";
+import { environment } from '../environments/environment.development';
 
 @NgModule({
   declarations: [
@@ -21,6 +24,8 @@ import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
     AppRoutingModule,
     FontAwesomeModule,
     BrowserAnimationsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]

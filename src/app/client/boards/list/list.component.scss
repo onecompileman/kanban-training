@@ -1,0 +1,37 @@
+@import "../../../../assets/scss/shared/config.scss";
+
+.#{$prefix}-list {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+
+    &__title {
+        color: $action_color;
+    }
+
+    &__container {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    &__item {
+       margin-bottom: 10px;
+       border-radius: 4px;
+       padding: 15px;
+       display: flex;
+       flex-direction: column;
+       background-color: $bg1;
+    }
+
+    &__item-title {
+        cursor: pointer;
+        color: $light;
+    }
+
+    &__item-subtitle {
+        color: $action_color;
+        font-size: 14px;
+    }
+}

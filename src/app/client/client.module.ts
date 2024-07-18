@@ -12,7 +12,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ListComponent } from './boards/list/list.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -22,14 +24,17 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     AddTaskComponent,
     ClientComponent,
     NavbarComponent,
+    ListComponent,
   ],
   imports: [
     CommonModule,
     ClientRoutingModule,
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
+    DragDropModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    FontAwesomeModule,
   ]
 })
 export class ClientModule { }

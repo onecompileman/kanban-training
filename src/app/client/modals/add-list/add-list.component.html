@@ -1,1 +1,58 @@
-<p>add-list works!</p>
+<form [formGroup]="listForm" class="kt-add-list">
+  <div class="modal-header">
+    <h5 class="modal-title pull-left">Add List</h5>
+    <button
+      type="button"
+      class="btn-close close pull-right"
+      aria-label="Close"
+      (click)="modalRef.hide()"
+    >
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col">
+        <label for="listName" class="form-label">List Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="listName"
+          placeholder="e.g. List Sample 1"
+          formControlName="name"
+        />
+        <div
+          *ngIf="listForm.get('name').errors && listForm.get('name').touched"
+          class="kt-error mt-2"
+        >
+          <small
+            *ngIf="listForm.get('name').errors['required']"
+            class="kt-error__item"
+            >List Name is required.</small
+          >
+          <small
+            *ngIf="listForm.get('name').errors['minlength']"
+            class="kt-error__item"
+            >List Name is must have at least 3 characters.</small
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-4 p-3">
+      <button
+        [disabled]="isSaving || listForm.invalid"
+        (click)="save()"
+        class="kt-button kt-button--primary kt-button--md w-100"
+      >
+        <fa-icon
+          *ngIf="isSaving"
+          [icon]="['fas', 'spinner']"
+          [animation]="'spin'"
+          class="me-2"
+        ></fa-icon>
+        Create List
+      </button>
+    </div>
+  </div>
+</form>

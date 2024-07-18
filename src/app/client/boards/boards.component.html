@@ -1,1 +1,44 @@
-<p>boards works!</p>
+<div class="kt-board">
+  <div class="kt-board__board-info">
+    <span class="me-3">Board Name</span> |
+    <span class="ms-3">Members: </span>
+    <div class="d-flex ms-2">
+      <img
+        src="https://xsgames.co/randomusers/assets/images/favicon.png"
+        alt="user"
+        height="36"
+        class="m-1"
+      />
+      <img
+        src="https://xsgames.co/randomusers/assets/images/favicon.png"
+        alt="user"
+        height="36"
+        class="m-1"
+      />
+      <img
+        src="https://xsgames.co/randomusers/assets/images/favicon.png"
+        alt="user"
+        height="36"
+        class="m-1"
+      />
+    </div>
+
+    <button class="ms-3 kt-button kt-button--sm kt-button--primary">
+      Invite user
+    </button>
+  </div>
+
+  <div class="kt-board__lists">
+    <div class="d-flex" cdkDropList>
+      <kt-list
+        cdkDrag
+        *ngFor="let i of [1, 2, 3, 4]"
+        [item]="i"
+        class="m-2"
+      ></kt-list>
+    </div>
+    <button (click)="addList()" class="kt-button kt-button--md kt-button--light ms-4">
+      + Add list
+    </button>
+  </div>
+</div>

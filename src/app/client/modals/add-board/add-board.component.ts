@@ -12,10 +12,16 @@ export class AddBoardComponent implements OnInit {
 
   boardForm: FormGroup;
 
+  isSaving: boolean;
+
   constructor(public modalRef: BsModalRef, private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
     this.initForm();
+  }
+
+  save() {
+    this.isSaving = true;
   }
 
   private initForm() {

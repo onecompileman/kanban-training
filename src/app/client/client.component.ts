@@ -7,10 +7,6 @@ import { AddBoardComponent } from './modals/add-board/add-board.component';
   templateUrl: './client.component.html',
   styleUrl: './client.component.scss'
 })
-export class ClientComponent implements OnInit{
-  constructor(private modalService: BsModalService) {}
-
-  ngOnInit(): void {
-    this.modalService.show(AddBoardComponent, { class: 'modal-md' })
-  }
+export class ClientComponent{
+ 
 }

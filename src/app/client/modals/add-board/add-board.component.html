@@ -58,7 +58,8 @@
     </div>
 
     <div class="row mt-4 p-3">
-      <button class="kt-button kt-button--primary kt-button--md w-100">
+      <button [disabled]="isSaving || boardForm.invalid" (click)="save()" class="kt-button kt-button--primary kt-button--md w-100">
+        <fa-icon *ngIf="isSaving" [icon]="['fas', 'spinner']" [animation]="'spin'" class="me-2"></fa-icon>
         Create Board
       </button>
     </div>

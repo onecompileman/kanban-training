@@ -1,1 +1,136 @@
-<p>add-task works!</p>
+<form [formGroup]="taskForm" class="kt-add-task">
+  <div class="modal-header">
+    <h5 class="modal-title pull-left">Add Task</h5>
+    <button
+      type="button"
+      class="btn-close close pull-right"
+      aria-label="Close"
+      (click)="modalRef.hide()"
+    >
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col">
+        <label for="taskName" class="form-label">Task Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="taskName"
+          placeholder="e.g. Task Sample 1"
+          formControlName="name"
+        />
+        <div
+          *ngIf="taskForm.get('name').errors && taskForm.get('name').touched"
+          class="kt-error mt-2"
+        >
+          <small
+            *ngIf="taskForm.get('name').errors['required']"
+            class="kt-error__item"
+            >Task Name is required.</small
+          >
+          <small
+            *ngIf="taskForm.get('name').errors['minlength']"
+            class="kt-error__item"
+            >Task Name is must have at least 3 characters.</small
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-2">
+      <div class="col">
+        <label for="taskName" class="form-label">Task Description</label>
+        <input
+          type="text"
+          class="form-control"
+          id="taskName"
+          placeholder="e.g. Sample Description"
+          formControlName="description"
+        />
+        <div
+          *ngIf="
+            taskForm.get('description').errors &&
+            taskForm.get('description').touched
+          "
+          class="kt-error mt-2"
+        >
+          <small
+            *ngIf="taskForm.get('description').errors['required']"
+            class="kt-error__item"
+            >Task description is required.</small
+          >
+          <small
+            *ngIf="taskForm.get('description').errors['minlength']"
+            class="kt-error__item"
+            >Task description is must have at least 10 characters.</small
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-2">
+      <div class="col">
+        <label for="taskName" class="form-label">Subtasks</label>
+        <div
+          class="d-flex w-100 mb-2"
+          *ngFor="let form of subtasksControls; let i = index"
+          [formGroup]="form"
+        >
+          <div class="flex-grow-1">
+            <input
+              type="text"
+              class="form-control"
+              id="taskName"
+              placeholder="e.g. Sample Description"
+              formControlName="name"
+            />
+            <div
+              *ngIf="form.get('name').errors && form.get('name').touched"
+              class="kt-error mt-2"
+            >
+              <small
+                *ngIf="form.get('name').errors['required']"
+                class="kt-error__item"
+                >Subtask is required.</small
+              >
+              <small
+                *ngIf="form.get('name').errors['minlength']"
+                class="kt-error__item"
+                >Subtask is must have at least 3 characters.</small
+              >
+            </div>
+          </div>
+          <div class="btn">
+            <fa-icon class="text-white" [icon]="['fas', 'xmark']"></fa-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button
+      type="button"
+      (click)="addSubtasks()"
+      class="kt-button kt-button--light kt-button--md w-100 mt-2"
+    >
+      Add Subtasks
+    </button>
+
+    <div class="row mt-4 p-3">
+      <button
+        [disabled]="isSaving || taskForm.invalid"
+        (click)="save()"
+        class="kt-button kt-button--primary kt-button--md w-100"
+      >
+        <fa-icon
+          *ngIf="isSaving"
+          [icon]="['fas', 'spinner']"
+          [animation]="'spin'"
+          class="me-2"
+        ></fa-icon>
+        Create Board
+      </button>
+    </div>
+  </div>
+</form>
