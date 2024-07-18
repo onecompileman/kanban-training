@@ -1,0 +1,14 @@
+@import "../shared/config.scss";
+
+.dropdown-menu {
+    inset: 100% auto auto -120px !important;
+    border-radius: 0;
+    background-color: $bg1;
+
+    .dropdown-item {
+        &:active, &:hover {
+            background-color: $bg1;
+        }
+        color: $label_color;
+    }
+}

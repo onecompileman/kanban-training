@@ -1,0 +1,13 @@
+@import '../../assets/scss/shared/config.scss';
+
+.#{$prefix}-login {
+    background-color: $bg2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    h1 {
+        color: $light;
+    }
+}

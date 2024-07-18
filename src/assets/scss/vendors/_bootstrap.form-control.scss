@@ -1,0 +1,26 @@
+@import "../shared/config.scss";
+
+.form-control, .form-select {
+  background-color: transparent;
+  border-color: $border-color;
+  color: $label_color;
+  border-radius: 2px;
+
+  &:active,
+  &:focus {
+    background-color: transparent;
+    color: $label_color;
+  }
+
+  &::placeholder {
+    color: $action-color;
+  }
+}
+
+.form-select {
+    --bs-form-select-bg-img: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='rgba(100,95,198)' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E")
+}
+
+.ng-invalid.ng-touched {
+  border-color: $danger;
+}

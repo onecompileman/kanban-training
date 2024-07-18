@@ -1,0 +1,12 @@
+@import "../shared/config.scss";
+
+.#{$prefix}-error {
+    display: flex;
+    flex-direction: column;
+
+    &__item {
+        font-size: 11px;
+        color: $danger;
+        margin-bottom: 6px;
+    }
+}

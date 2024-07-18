@@ -1,0 +1,41 @@
+@import "../../../../assets/scss/shared/config.scss";
+
+.#{$prefix}-add-board {
+  label {
+    font-size: 12px;
+    color: $label_color;
+  }
+
+  &__board-color {
+    height: 32px;
+    width: 32px;
+    border-radius: 100%;
+    margin: 5px;
+    transition: 0.2s linear;
+    cursor: pointer;
+
+    &--active {
+        border: 3px $light solid;
+    }
+
+    &--teal {
+        background-color: #48C7E6;
+    }
+
+    &--purple {
+        background-color: #8370EF;
+    }
+
+    &--green {
+        background-color: #63E5B0;
+    }
+
+    &--red {
+        background-color: #ED2B2A;
+    }
+
+    &--yellow {
+        background-color: #F2F7A1;
+    }
+  }
+}

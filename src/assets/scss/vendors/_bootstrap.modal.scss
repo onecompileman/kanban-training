@@ -1,0 +1,11 @@
+@import '../shared/config.scss';
+
+.modal-content {
+    background-color: $bg1;
+    border-radius: 5px;
+
+    .modal-header {
+        color: $light;
+        border-bottom: none;
+    }
+}
