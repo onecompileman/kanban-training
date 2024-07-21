@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { ToastrService } from 'ngx-toastr';
+import { BoardService } from '../../../core/services/board.service';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'kt-add-board',
@@ -14,7 +17,13 @@ export class AddBoardComponent implements OnInit {
 
   isSaving: boolean;
 
-  constructor(public modalRef: BsModalRef, private formBuilder: FormBuilder) {}
+  constructor(
+    public modalRef: BsModalRef,
+    private formBuilder: FormBuilder,
+    private toastrService: ToastrService,
+    private boardService: BoardService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.initForm();
@@ -22,6 +31,21 @@ export class AddBoardComponent implements OnInit {
 
   save() {
     this.isSaving = true;
+    const boardToAdd = this.boardForm.getRawValue();
+    const activeUser = this.authService.user$.getValue();
+    boardToAdd.createdBy = activeUser.id;
+    this.boardService.addBoard(boardToAdd).subscribe(
+      () => {
+        this.isSaving = false;
+        this.toastrService.success('Added board successfully');
+        this.modalRef.hide();
+      },
+      (error) => {
+        this.toastrService.error(
+          'Error occured adding the board, please contact admin or try again later.'
+        );
+      }
+    );
   }
 
   private initForm() {

@@ -15,6 +15,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ListComponent } from './boards/list/list.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import { SharedModule } from '../shared/shared.module';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -35,6 +36,7 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     ReactiveFormsModule,
     FormsModule,
     FontAwesomeModule,
+    SharedModule
   ]
 })
 export class ClientModule { }

@@ -2,11 +2,12 @@
   <h2>kanban</h2>
   <div class="btn-group" dropdown placement="left">
     <img
-      src="https://xsgames.co/randomusers/assets/images/favicon.png"
+      [src]="user.imageURL"
       dropdownToggle
       type="button"
       alt="user"
       height="42"
+      style="border-radius: 100%;"
     />
     <ul
       id="dropdown-animated"
@@ -15,7 +16,9 @@
       role="menu"
       aria-labelledby="button-animated"
     >
-      <li role="menuitem"><a class="dropdown-item" href="#">Logout</a></li>
+      <li role="menuitem"><a class="dropdown-item" (click)="logout()">
+       <fa-icon *ngIf="isLoggingOut" [icon]="['fas', 'spinner']" [animation]="'spin'"></fa-icon> Logout
+      </a></li>
       
     </ul>
   </div>

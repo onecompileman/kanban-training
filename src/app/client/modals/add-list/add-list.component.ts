@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { ColumnsService } from '../../../core/services/column.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'kt-add-list',
@@ -9,11 +11,18 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 })
 export class AddListComponent implements OnInit {
 
+  boardId: string;
+
   listForm: FormGroup;
 
   isSaving: boolean;
 
-  constructor(public modalRef: BsModalRef, private formBuilder: FormBuilder) {}
+  constructor(
+    public modalRef: BsModalRef,
+    private formBuilder: FormBuilder,
+    private columnService: ColumnsService,
+    private toastrService: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.initForm();
@@ -21,6 +30,21 @@ export class AddListComponent implements OnInit {
 
   save() {
     this.isSaving = true;
+    const columnToAdd = this.listForm.getRawValue();
+    columnToAdd.boardId = this.boardId;
+    columnToAdd.order = 0;
+    this.columnService.addColumns(columnToAdd).subscribe(
+      () => {
+        this.isSaving = false;
+        this.toastrService.success('Added list successfully');
+        this.modalRef.hide();
+      },
+      (error) => {
+        this.toastrService.error(
+          'Error occured adding the list, please contact admin or try again later.'
+        );
+      }
+    )
   }
 
   private initForm() {

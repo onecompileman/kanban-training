@@ -29,14 +29,17 @@
   </div>
 
   <div class="kt-board__lists">
-    <div class="d-flex" cdkDropList>
-      <kt-list
-        cdkDrag
-        *ngFor="let i of [1, 2, 3, 4]"
-        [item]="i"
-        class="m-2"
-      ></kt-list>
-    </div>
+    <ng-container >
+      <div class="d-flex" cdkDropListGroup>
+        <kt-list
+          cdkDrag
+          *ngFor="let column of columns"
+          [column]="column"
+          class="m-2"
+        ></kt-list>
+      </div>
+    </ng-container>
+    
     <button (click)="addList()" class="kt-button kt-button--md kt-button--light ms-4">
       + Add list
     </button>

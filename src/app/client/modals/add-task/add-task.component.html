@@ -42,13 +42,14 @@
     <div class="row mt-2">
       <div class="col">
         <label for="taskName" class="form-label">Task Description</label>
-        <input
+        <textarea
           type="text"
           class="form-control"
           id="taskName"
           placeholder="e.g. Sample Description"
           formControlName="description"
-        />
+          rows="4"
+        ></textarea>
         <div
           *ngIf="
             taskForm.get('description').errors &&
@@ -129,7 +130,7 @@
           [animation]="'spin'"
           class="me-2"
         ></fa-icon>
-        Create Board
+        Create Task
       </button>
     </div>
   </div>

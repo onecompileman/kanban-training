@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { GoogleAuthProvider } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'kt-login',
@@ -8,12 +9,16 @@ import { GoogleAuthProvider } from '@angular/fire/auth';
   styleUrl: './login.component.scss',
 })
 export class LoginComponent implements OnInit {
-  constructor(public auth: AngularFireAuth) {}
+  constructor(public auth: AngularFireAuth, private router: Router) {}
   async signInWithGoogle() {
     await this.auth.signInWithPopup(new GoogleAuthProvider());
   }
 
   ngOnInit(): void {
-    this.auth.authState.subscribe((user) => console.log(user))
+    this.auth.authState.subscribe((user) => {
+      if (user) {
+        this.router.navigate(['/client']);
+      }
+    })
   }
 }

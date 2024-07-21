@@ -1,2 +1,8 @@
-
 <router-outlet />
+<div *ngIf="loaderService.loading$ | async" class="kt-loading">
+  <h1>memory</h1>
+  <span class="mt-2">
+    <fa-icon [icon]="['fas', 'spinner']" animation="spin"></fa-icon>
+    Please wait, app is loading...
+  </span>
+</div>

@@ -1,23 +1,28 @@
 <div class="kt-home">
   <div class="d-flex justify-content-between mt-5">
     <h4>Personal boards</h4>
-    <button class="kt-button kt-button--md kt-button--primary">
+    <button
+      class="kt-button kt-button--md kt-button--primary"
+      (click)="addBoard()"
+    >
       Add board
     </button>
   </div>
   <div class="d-flex flex-wrap mt-2">
-    <a [routerLink]="['/client', 'board', 'id']" class="kt-home__board kt-home__board--teal">
-        <span>Board Sample</span>
+    <a
+      *ngFor="let board of boards"
+      [routerLink]="['/client', 'board', board.id]"
+      class="kt-home__board kt-home__board--{{ board.color }}"
+    >
+      <span>{{ board.name }}</span>
     </a>
-   
   </div>
   <div class="d-flex justify-content-between mt-5">
     <h4>Shared boards</h4>
   </div>
   <div class="d-flex flex-wrap mt-2">
-    <a class="kt-home__board  kt-home__board--red">
-        <span>Board Sample</span>
+    <a class="kt-home__board kt-home__board--red">
+      <span>Board Sample</span>
     </a>
-    
   </div>
 </div>

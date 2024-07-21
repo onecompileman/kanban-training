@@ -7,5 +7,7 @@ export const environment = {
         storageBucket: "angular-training-f3350.appspot.com",
         messagingSenderId: "517404055179",
         appId: "1:517404055179:web:65268778db1cf8d60a268e"
-      }
+      },
+  api: 'https://6695f3ed0312447373c08580.mockapi.io/',
+
 };
